@@ -1,0 +1,44 @@
+What are the objects?
+
+**Client**
+    HAS
+        id No.
+        name
+        payment information
+        appointments
+        workout logs
+        No. appointments remaining
+        Biometrics - age, height, weight, resting heart rate,
+                     injuries, limitations, etc
+    CAN
+        set and cancel appointments
+        buy appointments
+        view logs
+
+**Trainer**
+    HAS
+        id No.
+        name
+        available and occupied time slots
+        pay rate
+        profile/bio
+        specialties
+    CAN
+        set availability
+        confirm appointments
+        post workout log
+        mark client absent
+        view appointment history and logs of all clients
+        view all trainer's availabilities
+
+**Manager**
+    HAS
+        EVERYTHING A TRAINER HAS
+        consultation appointments
+        
+    CAN
+        EVERYTHING A TRAINER CAN
+        add and remove clients
+        add and remove trainers
+
+

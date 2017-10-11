@@ -1,0 +1,31 @@
+* {
+  font-family: Palatino, serif;
+}
+
+h1 {
+  color: black;
+  font-size: 40px;
+}
+h2 {
+  color: black;
+}
+p {
+  text-indent: 1cm;
+}
+#output {
+  font-style: italic;
+  color: black;
+  padding: 20px;
+  display: inline-block;
+  font-size: 20px;
+}
+input{
+  background-color: #ffe08c;
+}
+
+a:link {
+    color: black; 
+    font-size: 12px;
+    background-color: transparent; 
+    text-decoration: none;
+}

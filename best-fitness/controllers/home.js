@@ -10,6 +10,8 @@ const Controller = {
 
 		router.get('/', this.index);
 		router.put('/', this.create);
+		router.get('/register', this.register);
+		router.post('/register', this.registerPost);
 
 		return router;
 	},
@@ -19,6 +21,17 @@ const Controller = {
 	create(req, res) {
 		res.send('Good putt.')
 	},
+	register(req, res) {
+		res.render('register');
+	},
+	registerPost(req, res) {
+		models.Clients.create({
+		    firstName: req.body.firstName,
+		    lastName: req.body.lastName,
+		    email: req.body.email,
+		    password_hash: req.body.password,
+  		})
+	}
 };
 
 module.exports = Controller.registerRouter();

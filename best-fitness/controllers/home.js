@@ -12,6 +12,7 @@ const Controller = {
 		router.put('/', this.create);
 		router.get('/register', this.register);
 		router.post('/register', this.registerPost);
+		router.get('/clients', this.clients);
 
 		return router;
 	},
@@ -31,7 +32,20 @@ const Controller = {
 		    email: req.body.email,
 		    password_hash: req.body.password,
   		})
-	}
+	},
+	clients(req, res) {
+		//models.Client.findAll({
+		//}).then((allClients) => {
+		//	res.render('clients', {allClients});
+		//});
+		res.json([{
+			firstName: "John",
+			lastName: "Doe"
+		}, {
+			firstName: "Peter",
+			lastName: "Quill"
+		}])
+	},
 };
 
 module.exports = Controller.registerRouter();

@@ -34,17 +34,10 @@ const Controller = {
   		})
 	},
 	clients(req, res) {
-		//models.Client.findAll({
-		//}).then((allClients) => {
-		//	res.render('clients', {allClients});
-		//});
-		res.json([{
-			firstName: "John",
-			lastName: "Doe"
-		}, {
-			firstName: "Peter",
-			lastName: "Quill"
-		}])
+		models.Client.findAll({
+		}).then((allClients) => {
+			res.json({allClients});
+		});
 	},
 };
 

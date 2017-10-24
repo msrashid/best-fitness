@@ -8,7 +8,7 @@ class App extends Component {
   componentDidMount() {
     fetch('/clients')
       .then(res => res.json())
-      .then(clients => this.setState({ clients }));
+      .then(clients => this.setState({ clients: clients.allClients }));
   }
 
   render() {
@@ -20,7 +20,7 @@ class App extends Component {
         </header>
         <h1>Users</h1>
         {this.state.clients.map(client =>
-          <div key={client.firstName}>{client.lastName}</div>
+          <div key={client.id}>{client.firstName} {client.lastName}</div>
           )}
       </div>
     );

@@ -9,6 +9,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const expressSession = require('express-session');
+const passport = require('./authentication/authentication.js');
+
+app.use(expressSession(({ secret: 'keyboard cat'})));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // Uncomment the following if you want to serve up static assets.
 // (You must create the public folder)

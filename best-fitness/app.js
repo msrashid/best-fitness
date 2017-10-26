@@ -32,8 +32,8 @@ app.use(express.static('./public'));
 // Uncomment the following if you want to use handlebars
 // on the backend. (You must create the views folder)
 
-const exphbs = require('express-handlebars');
-app.engine('handlebars', exphbs({
+const express_handlebars = require('express-handlebars');
+app.engine('handlebars', express_handlebars({
   layoutsDir: './views/layouts',
   defaultLayout: 'main',
 }));

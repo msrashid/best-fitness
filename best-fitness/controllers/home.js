@@ -2,8 +2,6 @@ const express = require('express');
 const models = require('../models');
 const passport = require('../authentication/authentication');
 
-const router = express.Router();
-
 const Controller = {
 	registerRouter() {
 		const router = express.Router();
@@ -20,6 +18,7 @@ const Controller = {
 		return router;
 	},
 	index(req,res) {
+  		console.log("We're in index.");
   		res.redirect('/profile');
 	},
 	create(req, res) {
@@ -38,12 +37,14 @@ const Controller = {
   		})(req, res);
 	},
 	profile(req, res) {
+		console.log("We're in profile.")
 		passport.redirectIfNotLoggedIn('/register'),
   		(req, res) => {
     		res.send('The secret stash');
     	}
 	},
 	register(req, res) {
+		console.log("We're in register.")
 		res.render('register');
 	},
 	registerPost(req, res) {

@@ -1,15 +1,18 @@
 const express = require('express');
 const models = require('../models');
+const passport = require('../authentication/authentication');
 
-
-//const passport = require('../middlewares/authentication');
+const router = express.Router();
 
 const Controller = {
 	registerRouter() {
 		const router = express.Router();
 
 		router.get('/', this.index);
-		router.put('/', this.create);
+		router.post('/', this.create);
+		router.get('/login', this.login);
+		router.post('/login', this.loginPost);
+		router.get('/profile', this.profile);
 		router.get('/register', this.register);
 		router.post('/register', this.registerPost);
 		router.get('/clients', this.clients);
@@ -17,20 +20,42 @@ const Controller = {
 		return router;
 	},
 	index(req,res) {
-		res.send('The secret stash.')
+  		res.redirect('/profile');
 	},
 	create(req, res) {
 		res.send('Good putt.')
+	},
+	login(req, res) {
+		passport.redirectIfLoggedIn('/profile'),
+  		(req, res) => {
+    		res.render('login', { error: req.flash('error') });
+  		}
+	},
+	loginPost(req, res) {
+		passport.authenticate('local', {
+      		successRedirect: '/profile',
+      		failureRedirect: '/login',
+  		})(req, res);
+	},
+	profile(req, res) {
+		passport.redirectIfNotLoggedIn('/register'),
+  		(req, res) => {
+    		res.send('The secret stash');
+    	}
 	},
 	register(req, res) {
 		res.render('register');
 	},
 	registerPost(req, res) {
-		models.Clients.create({
-		    firstName: req.body.firstName,
-		    lastName: req.body.lastName,
-		    email: req.body.email,
-		    password_hash: req.body.password,
+		models.Client.create({
+    		firstName: req.body.firstName,
+    		lastName: req.body.lastName,
+    		email: req.body.email,
+    		password_hash: req.body.password,
+  		}).then((user) => {
+    		req.login(user, () => {
+      			res.redirect('/profile');
+    		})
   		})
 	},
 	clients(req, res) {

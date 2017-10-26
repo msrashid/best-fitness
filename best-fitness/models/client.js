@@ -6,5 +6,7 @@ module.exports = (sequelize, DataTypes) => {
 		password_hash: DataTypes.STRING,
 	});
 
+	Client.hasMany(Appointment);
+
 	return Client;
 }

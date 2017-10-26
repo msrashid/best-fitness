@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const models = require('./models');
-const http = require('http');
+//const http = require('http');
 
 
 const PORT = process.env.PORT || 8000;
@@ -19,7 +19,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-const server = http.createServer(app);
+//const server = http.createServer(app);
 
 
 
@@ -32,8 +32,8 @@ app.use(express.static('./public'));
 // Uncomment the following if you want to use handlebars
 // on the backend. (You must create the views folder)
 
-const exphbs = require('express-handlebars');
-app.engine('handlebars', exphbs({
+const express_handlebars = require('express-handlebars');
+app.engine('handlebars', express_handlebars({
   layoutsDir: './views/layouts',
   defaultLayout: 'main',
 }));

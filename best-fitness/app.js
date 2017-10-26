@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const models = require('./models');
-//const http = require('http');
+const http = require('http');
 
 
 const PORT = process.env.PORT || 8000;
@@ -19,7 +19,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-//const server = http.createServer(app);
+const server = http.createServer(app);
 
 
 

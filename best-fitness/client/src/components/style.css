@@ -1,0 +1,19 @@
+.banner{
+	height: 550px;
+	background-size: cover;
+	display: block;
+	position: relative;
+}
+.box{
+	margin: auto;
+	width: 650px;
+	height: 400px;
+	background-color: black;
+	opacity: 0.6;
+	color: white;
+}
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+}

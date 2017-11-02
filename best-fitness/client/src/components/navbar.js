@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
+//import 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
 
 
-const fixNavbar =  React.createClass({
-	render: function(){
+class Navbar extends React.Component {
+	render() {
 		return(
 			<div>
 				<nav className="navbar navbar-default navbar-fixed-top">
@@ -13,14 +13,16 @@ const fixNavbar =  React.createClass({
 						<div className="collapse navbar-collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li class="nav-item">
-									<a class="nav-link" href="#">LOGIN</a>
+									<a class="nav-link glyphicon glyphicon-log-in" href="#"> LOGIN</a>
 								</li>
 							</ul>
 						</div>
 					</div>
 				</nav>
-			<div> 
-		);
-	}
-});
-ReactDOM.render(<fixNavbar/>, document.getElementById('fixed-navbar'));
+				<br/>
+				<br/>
+			</div> 
+	)};
+}	
+
+export default Navbar;

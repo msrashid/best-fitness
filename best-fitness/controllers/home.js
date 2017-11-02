@@ -19,7 +19,7 @@ router.get('/register', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-  models.Clients.create({
+  models.Client.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,

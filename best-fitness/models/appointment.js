@@ -4,5 +4,10 @@ module.exports = (sequelize, DataTypes) => {
 		time: DataTypes.TIME,
 	});
 
+	Appointment.associate = (models) => {
+		models.Appointment.belongsTo(models.Client);
+		models.Appointment.belongsTo(models.Trainer);
+	}
+
 	return Appointment;
 }

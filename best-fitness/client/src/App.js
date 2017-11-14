@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import navbar from './components/navbar.js';
+import login from './components/login.js';
+import register from './components/register.js'
 
 class App extends Component {
   state = {clients: []}
@@ -13,16 +17,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <h1>Users</h1>
-        {this.state.clients.map(client =>
-          <div key={client.id}>{client.firstName} {client.lastName}</div>
-          )}
-      </div>
+      <Router>
+        <div>
+          <Route path ="/" component={navbar}/>
+          <br/>
+          <Route path ="/login" component={login}/>
+          <br/>
+          <Route path ="/register" component={register}/>
+        </div>
+      </Router>
     );
   }
 }

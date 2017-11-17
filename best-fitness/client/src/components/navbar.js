@@ -11,9 +11,9 @@ class Navbar extends React.Component {
 					<div className="container-fluid">
 						<a className="navbar-brand" href="/">Best Fitness</a>
 						<div className="collapse navbar-collapse">
-							<ul class="nav navbar-nav navbar-right">
-								<li class="nav-item">
-									<a class="nav-link glyphicon glyphicon-log-in" href="login"> LOGIN</a>
+							<ul className="nav navbar-nav navbar-right">
+								<li className="nav-item">
+									<a className="nav-link glyphicon glyphicon-log-in" href="login"> LOGIN</a>
 								</li>
 							</ul>
 						</div>

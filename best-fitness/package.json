@@ -19,6 +19,9 @@
     "sequelize": "^4.15.0"
   },
   "scripts": {
-    "start": "nodemon -L app.js"
+    "start": "nodemon --ignore node_modules/ --ignore client/ -L app.js"
+  },
+  "nodemonConfig": {
+    "ignore": ["node_modules/*", "client/*"]
   }
 }

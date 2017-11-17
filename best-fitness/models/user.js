@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password_hash: DataTypes.STRING,
   });
-
+//make sure email does not already exist
   User.associate = (models) => {
     models.User.hasOne(models.Client);
     models.User.hasOne(models.Trainer);

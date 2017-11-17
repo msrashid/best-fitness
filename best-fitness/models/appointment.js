@@ -1,8 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
-	const Appointment = sequelize.define('Appointment', {
-		date: DataTypes.DATEONLY,
-		time: DataTypes.TIME,
-	});
+  const Appointment = sequelize.define('Appointment', {
+    date: DataTypes.DATEONLY,
+    time: DataTypes.TIME,
+  });
 
-	return Appointment;
-}
+  Appointment.associate = (models) => {
+    models.Appointment.belongsTo(models.Client);
+    models.Appointment.belongsTo(models.Trainer);
+  };
+
+  return Appointment;
+};

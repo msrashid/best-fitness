@@ -19,8 +19,9 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <h1>Users</h1>
+        <h2>{this.state.clients[0]}</h2>
         {this.state.clients.map(client =>
-          <div key={client.id}>{client.firstName} {client.lastName}</div>
+          <div key={client.id}>{client.createAt} {client.updatedAt}</div>
           )}
       </div>
     );

@@ -1,24 +1,11 @@
 const express = require('express');
 const models = require('../models');
 const passport = require('../authentication/authentication');
-const { User, Client, Appointment } = models;
+const { User, Client, Trainer, Appointment } = models;
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.redirect('/profile');
-});
 
-router.get('/profile',
-  passport.redirectIfNotLoggedIn('/register'),
-  (req, res) => {
-    res.send('The secret stash');
-  }
-);
-
-router.get('/register', (req, res) => {
-  res.render('register');
-});
 
 router.post('/register', (req, res) => {
   User.create({
@@ -68,6 +55,11 @@ router.post('/login', (req, res) => {
   })(req, res);
 });
 
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+
 router.get('/clients', (req, res) => {
   Client.findAll({
   	include: [{
@@ -78,13 +70,68 @@ router.get('/clients', (req, res) => {
   });
 });
 
-router.post('appointment', (req, res) => {
+router.get('/trainers', (req, res) => {
+  Trainer.findAll({
+    include: [{
+      model: User,
+    }]
+  }).then((allTrainers) => {
+    res.json({ allTrainers });
+  });
+});
+
+router.post('/myAppointments', (req, res) => {
+  Appointment.findAll({
+    include: [{
+      model: Trainer,
+      include: [{
+        model: User,
+        attributes: ['firstName', 'lastName'],
+      }]
+    }],
+    where: [{
+      ClientId: req.body.clientId,
+    }],
+  }).then((allAppointments) => {
+    res.json({ allAppointments });
+  });
+});
+
+router.post('/appointment', (req, res) => {
 	Appointment.create({
 		date: req.body.date,
 		time: req.body.time,
 		ClientId: req.body.clientId,
 		TrainerId: req.body.trainerId,
-	})
-})
+	}).then((appointment) => {
+    res.json({ appointment });
+  });
+});
+
+router.post('/appointmentsByDate', (req, res) => {
+  Appointment.findAll({
+    where: [{
+      date: req.body.date,
+    }],
+    include: [
+      {
+        model: Trainer,
+        include: [{
+          model: User,
+          attributes: ['firstName', 'lastName'],
+        }],
+      },
+      {
+        model: Client,
+        include: [{
+            model: User,
+            attributes: ['firstName', 'lastName', 'email', 'createdAt'],
+        }],
+      },
+    ],
+  }).then((allAppointments) => {
+    res.json({ allAppointments });
+  });
+});
 
 module.exports = router;

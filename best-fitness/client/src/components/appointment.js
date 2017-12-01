@@ -4,7 +4,16 @@ import './style.css'
 
 
 class Appointment extends React.Component{
-	 render(){
+	constructor() {
+    super();
+    this.state = {
+      clientId: '',
+      date: '',
+      time: ''
+    };
+  };
+
+   render(){
     return(
       <div>
         <form>

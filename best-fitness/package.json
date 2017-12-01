@@ -22,7 +22,10 @@
     "start": "nodemon --ignore node_modules/ --ignore client/ -L app.js"
   },
   "nodemonConfig": {
-    "ignore": ["node_modules/*", "client/*"]
+    "ignore": [
+      "node_modules/*",
+      "client/*"
+    ]
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "app.js",

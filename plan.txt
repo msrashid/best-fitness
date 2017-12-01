@@ -1,0 +1,49 @@
+receive a password hash and an email
+check it
+if good:
+    deliver clientId, next 3 appointments with Trainer names if available, refresh does fetch data again
+
+if not good:
+    line of red text saying incorrect email and password
+
+Make appointment button:
+    Checkbox "Are you scheduling more than one trainer for the hour?"
+        How many? drop down [based on trainers available]
+    date, time
+    send reminder email? (checkbox)
+
+If no trainer is available, or queue is full, time slots are greyed out. If all slots of a day have full queues, entire day is greyed out.
+
+Backend to Front
+booleans per hour, or day, showing availability. (grey out or not)
+
+Front to back
+date, time, clientId
+
+
+when an appointment is made far in advance(a week to four days)
+    placed on a queue, taken out the queue when trainer posts availability
+    if they are still on the queue at time of appointment, no appointment is deducted from their inventory
+    if 4 people 
+
+at four days, trainers MUST provide availability
+
+if trainer has regular availability, and wishes to remove a certain shift, they must do so five days in advance
+
+Four or fewer days in advance, there is no queue, and clients can see how many trainers per hour remain available.
+
+================================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+================================================================================
+
+ALTERNATIVE, BASED ON THE CURRENT FLOW
+
+clients schedule their appointments. however, depending on trainer availability,
+ they possibly have to wait for confirmation.
+
+the machine notifies the next trainer on the list to be offered the session. 
+trainer confirms or turns down the appointment.
+
+there must be a time limit on confirming the appointment. this rule, plus the fixed number of trainers, should guarantee the client's appointment is confirmed within a reasonable amount of time.
+
+

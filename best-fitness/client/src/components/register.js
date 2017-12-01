@@ -19,10 +19,19 @@ class Register extends React.Component{
     console.log(this.state.email);
     fetch('/api/register', {
       method: 'POST',
-      body: this.state,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        password: this.state.password,
+      }),
     })
     .then(res => {
-      console.log(res);
+      console.log(this.state);
+      return res.json();
     })
     event.preventDefault();
   }

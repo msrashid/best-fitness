@@ -18,15 +18,19 @@ class Register extends React.Component{
   registerUser(event){
     fetch('/api/register', {
       method: 'POST',
-      data: {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         email: this.state.email,
         password: this.state.password,
-      }
+      }),
     })
     .then(res => {
-      console.log(res);
+      console.log(this.state);
+      return res.json();
     })
     event.preventDefault();
   }

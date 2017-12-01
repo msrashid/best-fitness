@@ -8,6 +8,8 @@ const router = express.Router();
 
 
 router.post('/register', (req, res) => {
+  console.log("The first name from body is:")
+  console.log(req.body.firstName);
   User.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -41,18 +43,10 @@ router.post('/trainer', (req, res) => {
 	})
 });
 
-router.get('/login',
-  passport.redirectIfLoggedIn('/profile'),
-  (req, res) => {
-    res.render('login');
-  }
-);
-
-router.post('/login', (req, res) => {
-  passport.authenticate('local', {
-    successRedirect: '/profile',
-    failureRedirect: '/login',
-  })(req, res);
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  res.json({
+    message: "You're logged in!",
+  });
 });
 
 router.get('/logout', (req, res) => {
@@ -80,7 +74,7 @@ router.get('/trainers', (req, res) => {
   });
 });
 
-router.post('/myAppointments', (req, res) => {
+router.get('/myAppointments/:clientId', (req, res) => {
   Appointment.findAll({
     include: [{
       model: Trainer,
@@ -90,7 +84,7 @@ router.post('/myAppointments', (req, res) => {
       }]
     }],
     where: [{
-      ClientId: req.body.clientId,
+      ClientId: req.params.clientId,
     }],
   }).then((allAppointments) => {
     res.json({ allAppointments });

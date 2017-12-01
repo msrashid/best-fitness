@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { Redirect } from 'react-router';
 import './style.css'
 
 
@@ -11,6 +12,7 @@ export default class Login extends React.Component{
 			email: '',
 			password: '',
       errorMessage: '',
+      isLoggedIn: false,
 		};
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,16 +22,21 @@ export default class Login extends React.Component{
   handleSubmit(event) {
     fetch('/api/login', {
       method: 'POST',
-      data: {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
         email: this.state.email,
         password: this.state.password,
-      }
+      }),
     })
     .then(res => {
+
       if(res.status === 400) {
         // show an error in this component
         this.setState({errorMessage: 'Invalid Email or Password'});
       } else {
+        this.setState({isLoggedIn: true});
         return res.json();
       }
     })
@@ -54,6 +61,10 @@ export default class Login extends React.Component{
 	}*/
 
 	 render(){
+    if(this.state.isLoggedIn) {
+      return <Redirect to="/appointment" />;
+    }
+
 		return(
 			<div>
 				<form onSubmit={this.handleSubmit}>
@@ -77,7 +88,7 @@ export default class Login extends React.Component{
         			<div class="row">
           				<div class="form-group col-xs-12 text-center">
               				<button type="submit" class="btn btn-default">Login</button>
-              				<button type="button" class="btn btn-default"><a href="register">Register</a></button>
+              				<button type="button" class="btn btn-default"><a href="/register">Register</a></button>
           				</div>
         			</div>
       			</form>

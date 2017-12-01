@@ -67,17 +67,17 @@ export default class Login extends React.Component{
           				</div>
         			</div>
         			<div class="row control-group">
-          				<div class="form-group col-xs-12 floating-label-form-group controls">
+          				<div className="form-group col-xs-12 floating-label-form-group controls">
             				<label>Password</label>
-            				<input type="password" onChange={this.handleChange} value={this.state.password} class="form-control" placeholder="Password" name="password" required data-validation-required-message="Please enter your password."/>
-            				<p class="help-block text-danger"></p>
+            				<input type="password" onChange={this.handleChange} value={this.state.password} className="form-control" placeholder="Password" name="password" required data-validation-required-message="Please enter your password."/>
+            				<p className="help-block text-danger"></p>
           				</div>
         			</div>
         			<br/>
-        			<div class="row">
-          				<div class="form-group col-xs-12 text-center">
-              				<button type="submit" class="btn btn-default">Login</button>
-              				<button type="button" class="btn btn-default"><a href="register">Register</a></button>
+        			<div className="row">
+          				<div className="form-group col-xs-12 text-center">
+              				<button type="submit" className="btn btn-default">Login</button>
+              				<button type="button" className="btn btn-default"><a href="register">Register</a></button>
           				</div>
         			</div>
       			</form>

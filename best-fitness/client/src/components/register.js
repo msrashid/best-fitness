@@ -16,14 +16,10 @@ class Register extends React.Component{
     this.registerUser = this.registerUser.bind(this);
   };
   registerUser(event){
+    console.log(this.state.email);
     fetch('/api/register', {
       method: 'POST',
-      data: {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        password: this.state.password,
-      }
+      body: this.state,
     })
     .then(res => {
       console.log(res);

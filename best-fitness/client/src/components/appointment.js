@@ -5,10 +5,44 @@ const moment = require('moment');
 
 
 class Day extends React.Component{
+  constructor(){
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit(event) {
+    console.log("This is a test");
+    fetch('/api/appointment', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        date: this.props.date,
+        time: '03:00',
+        ClientId: 1,
+        TrainerId: 1,
+      }),
+    })
+    .then(res => {
+
+      if(res.status === 400) {
+        // show an error in this component
+        this.setState({errorMessage: 'Unsuccessful'});
+      } else {
+        return res.json();
+      }
+    })
+    .then(body => {
+      console.log(body);
+    });
+
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div>
-        <button type="button" onClick={this.props.handleSubmit}>{this.props.date}</button>
+        <button type="button" onClick={this.handleSubmit}>{this.props.date}</button>
       </div>
     )
   };
@@ -29,35 +63,7 @@ class Appointment extends React.Component{
     };
   };
 
-  handleSubmit(event) {
-    console.log("This is a test");
-    fetch('/api/appointment', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        date: this.props.date,
-        time: '',
-        ClientId: 1,
-        TrainerId: 1,
-      }),
-    })
-    .then(res => {
-
-      if(res.status === 400) {
-        // show an error in this component
-        this.setState({errorMessage: 'Unsuccessful'});
-      } else {
-        return res.json();
-      }
-    })
-    .then(body => {
-      console.log(body);
-    });
-
-    event.preventDefault();
-  }
+  
 
    render(){
     return(

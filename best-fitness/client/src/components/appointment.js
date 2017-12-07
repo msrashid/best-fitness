@@ -14,8 +14,7 @@ class Day extends React.Component{
   };
 };
 
-let todaysDate = new Date();
-todaysDate = Date.now();
+let todaysDate = moment();
 
 class Appointment extends React.Component{
 	constructor() {
@@ -42,7 +41,7 @@ class Appointment extends React.Component{
         <br/>
         <div className="row">
           <div className="form-group col-xs-12 text-center">
-              <Day date={todaysDate}/>
+              <Day date={todaysDate.format("YYYY-MM-DD")}/>
           </div>
         </div>
       </form>

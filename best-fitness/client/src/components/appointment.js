@@ -1,15 +1,30 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import './style.css'
+const moment = require('moment');
 
+
+class Day extends React.Component{
+  render() {
+    return (
+      <div>
+        <button>{this.props.date}</button>
+      </div>
+    )
+  };
+};
+
+let todaysDate = new Date();
+todaysDate = Date.now();
 
 class Appointment extends React.Component{
 	constructor() {
     super();
     this.state = {
       clientId: '',
+      today: todaysDate,
       date: '',
-      time: ''
+      time: '',
     };
   };
 
@@ -27,7 +42,7 @@ class Appointment extends React.Component{
         <br/>
         <div className="row">
           <div className="form-group col-xs-12 text-center">
-              <button type="submit" className="btn btn-default">submit</button>
+              <Day date={todaysDate}/>
           </div>
         </div>
       </form>

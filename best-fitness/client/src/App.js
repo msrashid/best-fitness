@@ -4,8 +4,9 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import navbar from './components/navbar.js';
 import login from './components/login.js';
-import register from './components/register.js'
-import appointment from './components/appointment.js'
+import register from './components/register.js';
+import appointment from './components/appointment.js';
+import LoggedInnavbar from './components/loggedInNavbar.js';
 
 class App extends Component {
   state = {clients: []}
@@ -27,6 +28,9 @@ class App extends Component {
           <Route path ="/register" component={register}/>
           <br/>
           <Route path ="/appointment" component={appointment}/>
+          <br/>
+          <Route path ="/appointment" component={LoggedInnavbar}/>
+          <br/>
         </div>
       </Router>
     );

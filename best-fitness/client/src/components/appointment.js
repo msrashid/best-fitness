@@ -5,16 +5,51 @@ const moment = require('moment');
 
 
 class Day extends React.Component{
+  constructor(){
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit(event) {
+    fetch('/api/appointment', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        date: this.props.date,
+        time: '03:00',
+        ClientId: 1,
+        TrainerId: 1,
+      }),
+    })
+    .then(res => {
+
+      if(res.status === 400) {
+        // show an error in this component
+        this.setState({errorMessage: 'Unsuccessful'});
+      } else {
+        return res.json();
+      }
+    })
+    .then(body => {
+      console.log(body);
+    });
+
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div>
-        <button>{this.props.date}</button>
+        <button type="button" onClick={this.handleSubmit}>{this.props.date}</button>
       </div>
     )
   };
 };
 
 let todaysDate = moment();
+
+
 
 class Appointment extends React.Component{
 	constructor() {
@@ -27,24 +62,17 @@ class Appointment extends React.Component{
     };
   };
 
+
+
    render(){
     return(
       <div>
-        <form>
-        <div className="row control-group">
-          <div className="form-group col-xs-12 floating-label-form-group controls">
-            <label>Time (have to add calandar)</label>
-            <input type="text" className="form-control" placeholder="" name="time" required data-validation-required-message="valid date"/>
-            <p className="help-block text-danger"></p>
-          </div>
-        </div>
         <br/>
         <div className="row">
-          <div className="form-group col-xs-12 text-center">
-              <Day date={todaysDate.format("YYYY-MM-DD")}/>
+          <div className="col-xs-12 text-center">
+              <Day date={todaysDate.format("YYYY-MM-DD")} onClick={this.handleSubmit}/>
           </div>
         </div>
-      </form>
       </div>
     )
 	}

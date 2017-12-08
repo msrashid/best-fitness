@@ -10,7 +10,6 @@ class Day extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(event) {
-    console.log("This is a test");
     fetch('/api/appointment', {
       method: 'POST',
       headers: {
@@ -63,7 +62,7 @@ class Appointment extends React.Component{
     };
   };
 
-  
+
 
    render(){
     return(

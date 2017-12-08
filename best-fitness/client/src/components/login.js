@@ -13,10 +13,11 @@ export default class Login extends React.Component{
 			password: '',
       errorMessage: '',
       isLoggedIn: false,
+      redirect: false,
 		};
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.Redirect = this.Redirect.bind(this);
 	}
 
   handleSubmit(event) {
@@ -59,10 +60,15 @@ export default class Login extends React.Component{
 				console.log("Error", err);
 			});
 	}*/
-
+  Redirect(){
+    this.setState({redirect: true});
+  }
 	 render(){
     if(this.state.isLoggedIn) {
       return <Redirect to="/appointment" />;
+    }
+    else if(this.state.redirect) {
+      return <Redirect to="/register" />;
     }
 
 		return(
@@ -88,7 +94,7 @@ export default class Login extends React.Component{
         			<div className="row">
           				<div className="form-group col-xs-12 text-center">
               				<button type="submit" className="btn btn-default">Login</button>
-              				<button type="button" className="btn btn-default"><a href="register">Register</a></button>
+              				<button type="button" className="btn btn-default" onClick={this.Redirect}>Register</button>
           				</div>
         			</div>
       			</form>

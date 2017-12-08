@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { Redirect } from 'react-router';
 import './style.css'
 
 
@@ -11,6 +12,7 @@ class Register extends React.Component{
       lastName: '',
       email: '',
       password: '',
+      isRegistered: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.registerUser = this.registerUser.bind(this);
@@ -30,7 +32,19 @@ class Register extends React.Component{
       }),
     })
     .then(res => {
-      console.log(this.state);
+      if(res.status < 400){
+        fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: this.state.email,
+            password: this.state.password,
+            }),
+          })
+        this.setState({isRegistered: true});
+      }
       return res.json();
     })
     event.preventDefault();
@@ -41,6 +55,9 @@ class Register extends React.Component{
   }
 
 	 render(){
+    if(this.state.isRegistered) {
+      return <Redirect to="/appointment" />;
+    }
     return(
       <div>
         <form onSubmit={this.registerUser}>

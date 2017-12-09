@@ -18,8 +18,8 @@ class Day extends React.Component{
       body: JSON.stringify({
         date: this.props.date,
         time: '03:00',
-        ClientId: 1,
-        TrainerId: 1,
+        clientId: '1',
+        trainerId: null,
       }),
     })
     .then(res => {
@@ -47,16 +47,12 @@ class Day extends React.Component{
   };
 };
 
-let todaysDate = moment();
-
-
-
 class Appointment extends React.Component{
 	constructor() {
     super();
     this.state = {
       clientId: '',
-      today: todaysDate,
+      today: '',
       date: '',
       time: '',
     };
@@ -65,12 +61,22 @@ class Appointment extends React.Component{
 
 
    render(){
+    let todaysDate = moment();
+    let list = [];
+    for (let i = 0; i < 7; i++) {
+      list.push(todaysDate.add(1, 'days').format("YYYY-MM-DD"));
+    }
+
+    let dayElems = list.map((item) => {
+      return <Day date={item} onClick={this.handleSubmit}/>
+    })
+
     return(
       <div>
         <br/>
+        {dayElems}
         <div className="row">
           <div className="col-xs-12 text-center">
-              <Day date={todaysDate.format("YYYY-MM-DD")} onClick={this.handleSubmit}/>
           </div>
         </div>
       </div>

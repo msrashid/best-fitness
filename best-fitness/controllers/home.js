@@ -25,7 +25,10 @@ router.post('/register', (req, res) => {
       	res.json({ user, client });
     	});
   	})
-  })//.catch(//get errors, send back messages);
+  }).catch((error) => {
+    console.log("You done messed up.");
+    res.json({message: "That email address is already in use."});
+  });
 });
 
 router.post('/trainer', (req, res) => {
@@ -74,7 +77,7 @@ router.get('/trainers', (req, res) => {
   });
 });
 
-router.get('/myAppointments/:clientId', (req, res) => {
+router.get('/myAppointments/:ClientId', (req, res) => {
   Appointment.findAll({
     include: [{
       model: Trainer,
@@ -84,7 +87,7 @@ router.get('/myAppointments/:clientId', (req, res) => {
       }]
     }],
     where: [{
-      ClientId: req.params.clientId,
+      ClientId: req.params.ClientId,
     }],
   }).then((allAppointments) => {
     res.json({ allAppointments });

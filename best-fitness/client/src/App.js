@@ -30,13 +30,16 @@ class App extends Component {
           </div>
         </Router>
         <br/>
-        <div className="jumbotron">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12 jumbotron-text">
-                <h1>Headline</h1>
-              </div>
-            </div>
+        <div className="jumbotron img-responsive">
+          <div className="container-fluid">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
           </div>
         </div>
       </div>

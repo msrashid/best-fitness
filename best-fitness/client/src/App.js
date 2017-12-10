@@ -19,20 +19,27 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div>
-          <Route path ="/" component={navbar}/>
-          <br/>
-          <Route path ="/login" component={login}/>
-          <br/>
-          <Route path ="/register" component={register}/>
-          <br/>
-          <Route path ="/appointment" component={appointment}/>
-          <br/>
-          <Route path ="/appointment" component={LoggedInNavbar}/>
-          <br/>
+      <div>
+        <Router>
+          <div>
+            <Route path ="/" component={navbar}/>
+            <Route path ="/login" component={login}/>
+            <Route path ="/register" component={register}/>
+            <Route path ="/appointment" component={appointment}/>
+            <Route path ="/appointment" component={LoggedInNavbar}/>
+          </div>
+        </Router>
+        <br/>
+        <div className="jumbotron">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12 jumbotron-text">
+                <h1>Headline</h1>
+              </div>
+            </div>
+          </div>
         </div>
-      </Router>
+      </div>
     );
   }
 }

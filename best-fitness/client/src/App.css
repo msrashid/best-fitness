@@ -14,6 +14,17 @@
   color: white;
 }
 
+.jumbotron {
+  background-image: url('gym.jpg');
+  background-size: cover;
+  height: auto;
+  width: 100%;
+}
+
+.jumbotron-text {
+  height: 100%;
+}
+
 .App-title {
   font-size: 1.5em;
 }

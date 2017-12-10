@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import { Redirect } from 'react-router';
+import Appointment from './appointment.js';
 import './style.css'
 
 
@@ -14,6 +15,7 @@ export default class Login extends React.Component{
       errorMessage: '',
       isLoggedIn: false,
       redirect: false,
+      clientId: '',
 		};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,7 +34,6 @@ export default class Login extends React.Component{
       }),
     })
     .then(res => {
-
       if(res.status === 400) {
         // show an error in this component
         this.setState({errorMessage: 'Invalid Email or Password'});
@@ -43,6 +44,7 @@ export default class Login extends React.Component{
     })
     .then(body => {
       console.log(body);
+      console.log("I got the response here!")
     });
 
     event.preventDefault();
@@ -65,7 +67,7 @@ export default class Login extends React.Component{
   }
 	 render(){
     if(this.state.isLoggedIn) {
-      return <Redirect to="/appointment" />;
+      return <Redirect to="/appointment" render={(props) => ( <Appointment client='4'/> ) }/>;
     }
     else if(this.state.redirect) {
       return <Redirect to="/register" />;
@@ -77,14 +79,14 @@ export default class Login extends React.Component{
         			<div className="row control-group">
                 <br/>
                 <p className="text-center red-text">{this.state.errorMessage}</p>
-          				<div className="form-group col-xs-12 floating-label-form-group controls">
+          				<div className="form-group col-xs-4 floating-label-form-group controls">
             				<label>Email Address</label>
             				<input type="email" onChange={this.handleChange} value={this.state.email} className="form-control" placeholder="Email Address" name="email" required data-validation-required-message="Please enter your email address."/>
             				<p className="help-block text-danger"></p>
           				</div>
         			</div>
-        			<div class="row control-group">
-          				<div className="form-group col-xs-12 floating-label-form-group controls">
+        			<div className="row control-group">
+          				<div className="form-group col-xs-4 floating-label-form-group controls">
             				<label>Password</label>
             				<input type="password" onChange={this.handleChange} value={this.state.password} className="form-control" placeholder="Password" name="password" required data-validation-required-message="Please enter your password."/>
             				<p className="help-block text-danger"></p>
@@ -92,7 +94,7 @@ export default class Login extends React.Component{
         			</div>
         			<br/>
         			<div className="row">
-          				<div className="form-group col-xs-12 text-center">
+          				<div className="form-group col-xs-4 text-left">
               				<button type="submit" className="btn btn-default">Login</button>
               				<button type="button" className="btn btn-default" onClick={this.Redirect}>Register</button>
           				</div>

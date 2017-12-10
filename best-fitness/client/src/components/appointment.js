@@ -10,7 +10,7 @@ class Day extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(event) {
-    fetch('/api/appointment', {
+    fetch('/api/appointment/' + this.props.id, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -18,7 +18,6 @@ class Day extends React.Component{
       body: JSON.stringify({
         date: this.props.date,
         time: '03:00',
-        clientId: '1',
         trainerId: null,
       }),
     })
@@ -59,8 +58,8 @@ class Appointment extends React.Component{
   };
 
 
-
-   render(){
+  render(){
+    console.log(this.props.client);
     let todaysDate = moment();
     let list = [];
     for (let i = 0; i < 7; i++) {
@@ -68,7 +67,7 @@ class Appointment extends React.Component{
     }
 
     let dayElems = list.map((item) => {
-      return <Day date={item} onClick={this.handleSubmit}/>
+      return <Day date={item} onClick={this.handleSubmit} id={this.state.clientId}/>
     })
 
     return(

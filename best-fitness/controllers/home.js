@@ -1,14 +1,16 @@
 const express = require('express');
 const models = require('../models');
 const passport = require('../authentication/authentication');
-const { User, Client, Trainer, Appointment } = models;
+
+const {
+  User, Client, Trainer, Appointment,
+} = models;
 
 const router = express.Router();
 
 
-
 router.post('/register', (req, res) => {
-  console.log("The first name from body is:")
+  console.log('The first name from body is:');
   console.log(req.body.firstName);
   User.create({
     firstName: req.body.firstName,
@@ -19,15 +21,15 @@ router.post('/register', (req, res) => {
     Client.create({
       UserId: user.id,
     }).then((client) => {
-    	req.login(user, () => {
-    	//send json with message and user data
-    	//catch failures
-      	res.json({ user, client });
-    	});
+      req.login(user, () => {
+      // send json with message and user data
+      // catch failures
+      res.json({ user, client });
+      });
   	})
   }).catch((error) => {
-    console.log("You done messed up.");
-    res.json({message: "That email address is already in use."});
+    console.log('You done messed up.');
+    res.json({ message: 'That email address is already in use.' });
   });
 });
 
@@ -47,8 +49,15 @@ router.post('/trainer', (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  res.json({
-    message: "You're logged in!",
+  User.findOne({
+    where: [{
+      email: req.body.email,
+    }],
+    include: [{
+      model: Client,
+    }],
+  }).then((user) => {
+    res.json({ user });
   });
 });
 
@@ -61,7 +70,7 @@ router.get('/clients', (req, res) => {
   Client.findAll({
   	include: [{
   		model: User,
-  	}]
+  	}],
   }).then((allClients) => {
     res.json({ allClients });
   });
@@ -94,11 +103,11 @@ router.get('/myAppointments/:ClientId', (req, res) => {
   });
 });
 
-router.post('/appointment', (req, res) => {
+router.post('/appointment/:ClientId', (req, res) => {
 	Appointment.create({
 		date: req.body.date,
 		time: req.body.time,
-		ClientId: req.body.clientId,
+		ClientId: req.params.ClientId,
 		TrainerId: req.body.trainerId,
 	}).then((appointment) => {
     res.json({ appointment });

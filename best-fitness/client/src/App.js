@@ -6,7 +6,7 @@ import navbar from './components/navbar.js';
 import login from './components/login.js';
 import register from './components/register.js';
 import appointment from './components/appointment.js';
-import LoggedInnavbar from './components/loggedInNavbar.js';
+import LoggedInNavbar from './components/loggedInNavbar.js';
 
 class App extends Component {
   state = {clients: []}
@@ -29,7 +29,7 @@ class App extends Component {
           <br/>
           <Route path ="/appointment" component={appointment}/>
           <br/>
-          <Route path ="/appointment" component={LoggedInnavbar}/>
+          <Route path ="/appointment" component={LoggedInNavbar}/>
           <br/>
         </div>
       </Router>

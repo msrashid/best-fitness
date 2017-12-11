@@ -34,10 +34,12 @@ export default class Login extends React.Component{
       }),
     })
     .then(res => {
-      if(res.status === 400) {
+      console.log(res);
+      if(res.status >= 400) {
         // show an error in this component
         this.setState({errorMessage: 'Invalid Email or Password'});
       } else {
+        
         this.setState({isLoggedIn: true});
         return res.json();
       }

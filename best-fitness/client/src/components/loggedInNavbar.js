@@ -16,7 +16,7 @@ class loggedInNavbar extends React.Component {
       <div>
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container-fluid">
-            <a className="navbar-brand" href="/">Best Fitness</a>
+            <a className="navbar-brand" href="/">Bestest Fitness</a>
             <div className="collapse navbar-collapse">
               <ul className="nav navbar-nav navbar-right">
                 <li className="nav-item">

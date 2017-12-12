@@ -13,6 +13,7 @@ class Register extends React.Component{
       email: '',
       password: '',
       isRegistered: false,
+      currUser: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.registerUser = this.registerUser.bind(this);

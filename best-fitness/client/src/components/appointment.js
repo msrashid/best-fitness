@@ -18,7 +18,7 @@ class Day extends React.Component{
       body: JSON.stringify({
         date: this.props.date,
         time: '03:00',
-        trainerId: null,
+        trainerId: '1',
       }),
     })
     .then(res => {

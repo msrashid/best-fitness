@@ -28,7 +28,7 @@ class loggedInNavbar extends React.Component {
               </ul>
               <ul className="nav navbar-nav navbar-right">
                 <li className="nav-item">
-                  <Link className="nav-link glyphicon glyphicon-log-out" to="logout"> LOGOUT</Link>
+                  <Link className="nav-link glyphicon glyphicon-log-out" to="/logout">Logout</Link>
                 </li>
               </ul>
             </div>

@@ -31,11 +31,24 @@ class MyAppointments extends React.Component {
   render(){
   	this.getAppointments();
   	let appointment = this.state.appointments.map((item) => {
-  		return <p>{item.date} {item.time}</p>
+  		return(
+  				<tr>
+  					<td>{item.date}</td>
+  					<td>{item.time}</td>
+  				</tr>
+  		)
   	})
   	return(
   		<div>
-  		{appointment}
+  		<h3 className="text-center">Appointments</h3>
+  		<br/>
+  		<table className="text-center">
+  			<tr>
+  				<th>Date</th>
+  				<th>Time</th>
+  			</tr>
+  			{appointment}
+  		</table>
   		</div>
   )}
 }

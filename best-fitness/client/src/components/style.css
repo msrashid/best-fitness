@@ -30,3 +30,16 @@ footer {
 	margin-right: 9em;
 	margin-left: 10em;
 }
+table{
+	margin: auto;
+	border: solid 1px black;
+}
+td,th{
+	text-align: center;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+th{
+	font-size: 1.3em;
+}

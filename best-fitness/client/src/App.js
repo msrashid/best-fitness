@@ -7,7 +7,8 @@ import Login from './components/login.js';
 import Register from './components/register.js';
 import Appointment from './components/appointment.js';
 import LoggedInNavbar from './components/loggedInNavbar.js';
-import Jumbotron from './components/jumbotron.js'
+import Jumbotron from './components/jumbotron.js';
+import MyAppointments from './components/myappointments.js';
 
 class App extends Component {
   state = {
@@ -47,6 +48,7 @@ class App extends Component {
             <Route exact path ="/" component={Jumbotron}/>
             <Route path ="/appointment" component={LoggedInNavbar}/>
             <Route path ="/myappointments" component={LoggedInNavbar}/>
+            <Route path ="/myappointments" render={() => <MyAppointments id={this.state.currUser.id}/>}/>
           </div>
         </Router>
         <br/>

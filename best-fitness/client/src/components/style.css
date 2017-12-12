@@ -1,5 +1,5 @@
 .banner{
-	height: 550px;
+	height: 750px;
 	background-size: cover;
 	display: block;
 	position: relative;
@@ -19,4 +19,13 @@ footer {
 }
 .red-text {
 	color: red;
+}
+.position-center{
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+}
+.margin-fix{
+	margin-right: 9em;
+	margin-left: 10em;
 }

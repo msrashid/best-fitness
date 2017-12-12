@@ -7,6 +7,7 @@ import login from './components/login.js';
 import register from './components/register.js';
 import appointment from './components/appointment.js';
 import LoggedInNavbar from './components/loggedInNavbar.js';
+import jumbotron from './components/jumbotron.js'
 
 class App extends Component {
   state = {clients: []}
@@ -23,6 +24,7 @@ class App extends Component {
         <Router>
           <div>
             <Route path ="/" component={navbar}/>
+            <Route exact path ="/" component={jumbotron}/>
             <Route path ="/login" component={login}/>
             <Route path ="/register" component={register}/>
             <Route path ="/appointment" component={appointment}/>
@@ -30,25 +32,6 @@ class App extends Component {
           </div>
         </Router>
         <br/>
-        <div className="jumbotron img-responsive">
-          <div className="container-fluid">
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-          </div>
-        </div>
       </div>
     );
   }

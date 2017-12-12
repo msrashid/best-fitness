@@ -78,26 +78,27 @@ export default class Login extends React.Component{
 
 		return(
 			<div>
-				<form onSubmit={this.handleSubmit}>
-        			<div className="row control-group">
+				<form className="text-center" onSubmit={this.handleSubmit}>
+        			<div className="row control-group text-center">
                 <br/>
                 <p className="text-center red-text">{this.state.errorMessage}</p>
-          				<div className="form-group col-xs-4 floating-label-form-group controls">
+          				<div className=" position-center form-group margin-fix floating-label-form-group controls">
             				<label>Email Address</label>
             				<input type="email" onChange={this.handleChange} value={this.state.email} className="form-control" placeholder="Email Address" name="email" required data-validation-required-message="Please enter your email address."/>
             				<p className="help-block text-danger"></p>
           				</div>
         			</div>
-        			<div className="row control-group">
-          				<div className="form-group col-xs-4 floating-label-form-group controls">
+        			<div className="row control-group text-center">
+          				<div className="form-group margin-fix floating-label-form-group controls">
             				<label>Password</label>
             				<input type="password" onChange={this.handleChange} value={this.state.password} className="form-control" placeholder="Password" name="password" required data-validation-required-message="Please enter your password."/>
             				<p className="help-block text-danger"></p>
           				</div>
         			</div>
         			<br/>
+              <br/>
         			<div className="row">
-          				<div className="form-group col-xs-4 text-left">
+          				<div className="form-group text-center">
               				<button type="submit" className="btn btn-default">Login</button>
               				<button type="button" className="btn btn-default" onClick={this.Redirect}>Register</button>
           				</div>

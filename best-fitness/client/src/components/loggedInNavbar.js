@@ -16,8 +16,16 @@ class loggedInNavbar extends React.Component {
       <div>
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container-fluid">
-            <a className="navbar-brand" href="/">Bestest Fitness</a>
+            <a className="navbar-brand" href="/">Best Fitness</a>
             <div className="collapse navbar-collapse">
+              <ul className="nav navbar-nav">
+                <li className="nav-item">
+                    <a className="nav-item" href="/appointment">Create Appointment</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-item" href="/myappointments">My Appointments</a>
+                </li>
+              </ul>
               <ul className="nav navbar-nav navbar-right">
                 <li className="nav-item">
                   <a className="nav-link glyphicon glyphicon-log-out" href="logout"> LOGOUT</a>

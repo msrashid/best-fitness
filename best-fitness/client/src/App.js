@@ -7,6 +7,7 @@ import Login from './components/login.js';
 import Register from './components/register.js';
 import Appointment from './components/appointment.js';
 import LoggedInNavbar from './components/loggedInNavbar.js';
+import Jumbotron from './components/jumbotron.js'
 
 class App extends Component {
   state = {
@@ -43,29 +44,12 @@ class App extends Component {
             <Route path ="/login" render={() => <Login setCurrUser={this.setCurrUser} isLoggedIn={Boolean(this.state.currUser)}/>} />
             <Route path ="/register" component={Register}/>
             <Route path ="/appointment" render={() => <Appointment client={this.state.currUser}/>} />
+            <Route exact path ="/" component={Jumbotron}/>
             <Route path ="/appointment" component={LoggedInNavbar}/>
+            <Route path ="/myappointments" component={LoggedInNavbar}/>
           </div>
         </Router>
         <br/>
-        <div className="jumbotron img-responsive">
-          <div className="container-fluid">
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-          </div>
-        </div>
       </div>
     );
   }

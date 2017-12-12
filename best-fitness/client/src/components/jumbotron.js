@@ -6,13 +6,8 @@ class Jumbotron extends React.Component{
 	render(){
 		return(
 			<div>
-				<div className="jumbotron">
+				<div className="jumbotron jumbotron-fluid">
 					<div className="banner">
-						<div className="col-md-12">
-							<div className="box">
-								<p className="text-center"> text inside here </p>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

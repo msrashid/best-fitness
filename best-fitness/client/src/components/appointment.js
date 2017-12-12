@@ -60,6 +60,7 @@ class Appointment extends React.Component{
 
   render(){
     console.log(this.props.client);
+    let clientId = this.props.client ? this.props.client.id : '';
     let todaysDate = moment();
     let list = [];
     for (let i = 0; i < 7; i++) {
@@ -67,7 +68,7 @@ class Appointment extends React.Component{
     }
 
     let dayElems = list.map((item) => {
-      return <Day date={item} onClick={this.handleSubmit} id={this.state.clientId}/>
+      return <Day date={item} onClick={this.handleSubmit} id={clientId}/>
     })
 
     return(

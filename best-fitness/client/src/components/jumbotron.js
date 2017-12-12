@@ -6,7 +6,7 @@ class Jumbotron extends React.Component{
 	render(){
 		return(
 			<div>
-				<div className="jumbotron">
+				<div className="jumbotron jumbotron-fluid">
 					<div className="banner">
 					</div>
 				</div>

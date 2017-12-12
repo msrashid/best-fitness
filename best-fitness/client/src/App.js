@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/navbar.js';
 import Login from './components/login.js';
+import Logout from './components/logout.js';
 import Register from './components/register.js';
 import Appointment from './components/appointment.js';
 import LoggedInNavbar from './components/loggedInNavbar.js';
@@ -42,11 +43,12 @@ class App extends Component {
           <div>
             <Route path ="/" component={Navbar}/>
             <Route path ="/login" render={() => <Login setCurrUser={this.setCurrUser} isLoggedIn={Boolean(this.state.currUser)}/>} />
+            <Route path ="/logout" render={() => <Logout setCurrUser={this.setCurrUser}/>} />
             <Route path ="/register" component={Register}/>
             <Route path ="/appointment" render={() => <Appointment client={this.state.currUser}/>} />
             <Route exact path ="/" component={Jumbotron}/>
-            <Route path ="/appointment" component={LoggedInNavbar}/>
-            <Route path ="/myappointments" component={LoggedInNavbar}/>
+            <Route path ="/appointment" render={() => <LoggedInNavbar setCurrUser={this.setCurrUser} />}/>
+            <Route path ="/myappointments" render={() => <LoggedInNavbar setCurrUser={this.setCurrUser} />}/>
           </div>
         </Router>
         <br/>

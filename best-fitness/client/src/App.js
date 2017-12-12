@@ -50,7 +50,7 @@ class App extends Component {
             <Route exact path ="/" component={Jumbotron}/>
             <Route path ="/appointment" render={() => <LoggedInNavbar setCurrUser={this.setCurrUser} />}/>
             <Route path ="/myappointments" render={() => <LoggedInNavbar setCurrUser={this.setCurrUser} />}/>
-            <Route path ="/myappointments" render={() => <MyAppointments/>}/>
+            <Route path ="/myappointments" render={() => <MyAppointments client={this.state.currUser} />} />
           </div>
         </Router>
         <br/>

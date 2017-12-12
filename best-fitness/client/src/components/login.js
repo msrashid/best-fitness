@@ -44,9 +44,11 @@ export default class Login extends React.Component{
       }
     })
     .then(body => {
-      console.log(body);
-      console.log("I got the response here!")
-      this.props.setCurrUser(body.user)
+      if(this.state.isLoggedIn){
+        console.log(body);
+        console.log("I got the response here!")
+        this.props.setCurrUser(body.user)
+      }
     });
 
     event.preventDefault();

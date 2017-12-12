@@ -60,7 +60,8 @@ class Appointment extends React.Component{
 
   render(){
     console.log(this.props.client);
-    let clientId = this.props.client ? this.props.client.id : '';
+    let clientId = this.props.client ? this.props.client.Client.id : '';
+    console.log(clientId);
     let todaysDate = moment();
     let list = [];
     for (let i = 0; i < 7; i++) {

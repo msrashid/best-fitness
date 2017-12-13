@@ -12,8 +12,8 @@ class Day extends React.Component{
   
   render() {
     return (
-      <div>
-        <button type="button" onClick={() => this.props.setDate(this.props.date)}>{this.props.date}</button>
+      <div className="display">
+        <button className="bigButton" type="button" onClick={() => this.props.setDate(this.props.date)}>{this.props.date}</button>
       </div>
     )
   };
@@ -61,8 +61,8 @@ class Time extends React.Component {
 
   render() {
     return (
-      <div>
-        <button type="button" onClick={this.handleSubmit}>{this.props.time.format("hA")}</button>
+      <div className="display">
+        <button className="bigButton" type="button" onClick={this.handleSubmit}>{this.props.time.format("hA")}</button>
       </div>
     )
   };
@@ -116,19 +116,28 @@ class Appointment extends React.Component{
       }
 
       Elems = list.map((item) => {
-        return <Day date={item} setDate={this.setDate} id={clientId} />
+        return (
+          <div>
+            <Day date={item} setDate={this.setDate} id={clientId} />
+            <br/>
+          </div>
+        )
       });
 
     } else if (!Boolean(this.state.time)) {
       let list = [];
-
       for (let i = 8; i < 20; i++) {
         console.log(moment().hours(i).minutes(0).seconds(0).format("hA"));
         list.push(moment().hours(i).minutes(0).seconds(0));
       }
 
       Elems = list.map((item) => {
-        return <Time time={item} setTime={this.setTime} setRedirect={this.setRedirect} id={clientId} date={this.state.date}/>
+        return (
+          <div>
+            <Time time={item} setTime={this.setTime} setRedirect={this.setRedirect} id={clientId} date={this.state.date}/>
+            <br/>
+          </div>
+        )
       });
 
     }
@@ -136,10 +145,12 @@ class Appointment extends React.Component{
     return(
       <div>
         <br/>
-        {Elems}
+        <br/>
+        <div className="displayout">
+          {Elems}
+        </div>
         <div className="row">
-          <div className="col-xs-12 text-center">
-          </div>
+          {Elems}
         </div>
       </div>
     )

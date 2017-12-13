@@ -81,7 +81,7 @@ export default class Login extends React.Component{
         			<div className="row control-group text-center">
                 <br/>
                 <p className="text-center red-text">{this.state.errorMessage}</p>
-          				<div className=" position-center form-group margin-fix floating-label-form-group controls">
+          				<div className="position-center form-group margin-fix floating-label-form-group controls">
             				<label>Email Address</label>
             				<input type="email" onChange={this.handleChange} value={this.state.email} className="form-control" placeholder="Email Address" name="email" required data-validation-required-message="Please enter your email address."/>
             				<p className="help-block text-danger"></p>
@@ -96,8 +96,8 @@ export default class Login extends React.Component{
         			</div>
         			<br/>
               <br/>
-        			<div className="row">
-          				<div className="form-group text-center">
+        			<div className="row newfont">
+          				<div className="form-group text-center col-*-6">
               				<button type="submit" className="btn btn-default">Login</button>
               				<button type="button" className="btn btn-default" onClick={this.Redirect}>Register</button>
           				</div>

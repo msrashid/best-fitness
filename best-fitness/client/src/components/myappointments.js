@@ -37,14 +37,14 @@ class MyAppointments extends React.Component {
   	let appointment = this.state.appointments.map((item) => {
   		return(
   				<tr>
-  					<td>{item.date}</td>
-  					<td>{item.time}</td>
+  					<td>{moment(item.date, "YYYY-MM-DD").format("ddd MMM Do")}</td>
+  					<td>{moment(item.time, "HH:mm:ss").format("hA")}</td>
   				</tr>
   		)
   	})
   	return(
   		<div>
-  		<h3 className="text-center newfont">Appointments</h3>
+  		<h3 className="text-center newfont">Your appointments! Are you ready?</h3>
   		<br/>
   		<table className="text-center newfont">
   			<tr>

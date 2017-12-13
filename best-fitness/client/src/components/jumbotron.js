@@ -6,8 +6,9 @@ class Jumbotron extends React.Component{
 	render(){
 		return(
 			<div className="container">
-				<div className="row jumbotron">
-					<div className="col-lg-12 banner">
+				<div className="row jumbotron newfont">
+					<div className="col-lg-12 banner jumbotron-text">
+						<h1>Lift with the Force!</h1>
 					</div>
 				</div>
 			</div>

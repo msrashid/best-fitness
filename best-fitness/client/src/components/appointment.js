@@ -149,9 +149,6 @@ class Appointment extends React.Component{
         <div className="displayout">
           {Elems}
         </div>
-        <div className="row">
-          {Elems}
-        </div>
       </div>
     )
 	}

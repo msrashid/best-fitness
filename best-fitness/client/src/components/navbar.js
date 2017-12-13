@@ -16,7 +16,7 @@ class Navbar extends React.Component {
 			<div>
 				<nav className="navbar navbar-default navbar-fixed-top">
 					<div className="container-fluid">
-						<Link className="navbar-brand" to="/">Best Fitness</Link>
+						<Link className="navbar-brand newfont" to="/">Best Fitness</Link>
 						<div className="collapse navbar-collapse">
 							<ul className="nav navbar-nav navbar-right">
 								<li className="nav-item">
@@ -34,11 +34,11 @@ class Navbar extends React.Component {
 			<div>
 				<nav className="navbar navbar-default navbar-fixed-top">
 					<div className="container-fluid">
-						<Link className="navbar-brand" to="/">Best Fitness</Link>
+						<Link className="navbar-brand newfont" to="/">Best Fitness</Link>
 						<div className="collapse navbar-collapse">
 							<ul className="nav navbar-nav navbar-right">
 								<li className="nav-item">
-									<Link className="nav-link glyphicon glyphicon-log-in" to="login"> LOGIN</Link>
+									<Link className="nav-link glyphicon glyphicon-log-in newfont" to="login"> LOGIN</Link>
 								</li>
 							</ul>
 						</div>

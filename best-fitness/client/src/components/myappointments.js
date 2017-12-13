@@ -44,9 +44,9 @@ class MyAppointments extends React.Component {
   	})
   	return(
   		<div>
-  		<h3 className="text-center">Appointments</h3>
+  		<h3 className="text-center newfont">Appointments</h3>
   		<br/>
-  		<table className="text-center">
+  		<table className="text-center newfont">
   			<tr>
   				<th>Date</th>
   				<th>Time</th>

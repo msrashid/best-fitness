@@ -77,7 +77,7 @@ export default class Login extends React.Component{
 
 		return(
 			<div>
-				<form className="text-center" onSubmit={this.handleSubmit}>
+				<form className="text-center newfont" onSubmit={this.handleSubmit}>
         			<div className="row control-group text-center">
                 <br/>
                 <p className="text-center red-text">{this.state.errorMessage}</p>

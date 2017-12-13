@@ -1,3 +1,7 @@
+@font-face{
+	font-family: 'Alcubierre';
+	src: url('Alcubierre.otf');
+}
 .banner{
 	height: 750px;
 	width: auto;
@@ -53,11 +57,19 @@ th{
 	margin-top: 10px;
 }
 .bigButton{
-	width: 140px;
+	width: 180px;
 	height: 45px;
 	border-radius: 4px;
 	border: solid;
+	border-color: navy;
+	background-color: white;
+	font-size: 20px;
+	font-weight: bold;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
+}
+.newfont{
+	font-family: 'Alcubierre';
+	font-weight: bold;
 }

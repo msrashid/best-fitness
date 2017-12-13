@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { Switch, Route, Link } from 'react-router-dom'; 
+import { Switch, Route, Link } from 'react-router-dom';
+import './style.css'
+
 
 
 class loggedInNavbar extends React.Component {
@@ -16,7 +18,7 @@ class loggedInNavbar extends React.Component {
       <div>
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/">Best Fitness</Link>
+            <Link className="navbar-brand newfont" to="/">Best Fitness</Link>
             <div className="collapse navbar-collapse">
               <ul className="nav navbar-nav">
                 <li className="nav-item">

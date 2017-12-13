@@ -15,7 +15,7 @@ class Day extends React.Component{
     return (
       <div className="display">
         <button
-          className="bigButton"
+          className="bigButton newfont"
           type="button"
           onClick={() => this.props.setDate(this.props.date.database)}>
           {this.props.date.display}
@@ -68,7 +68,11 @@ class Time extends React.Component {
   render() {
     return (
       <div className="display">
-        <button className="bigButton" type="button" onClick={this.handleSubmit}>{this.props.time.format("hA")}</button>
+        <button className="bigButton newfont"
+        type="button"
+        onClick={this.handleSubmit}>
+        {this.props.time.format("hA")}
+        </button>
       </div>
     )
   };
@@ -126,7 +130,7 @@ class Appointment extends React.Component{
         let oneDay = todaysDate.add(1, 'days');
         list.push({
           database: oneDay.format("YYYY-MM-DD"),
-          display: oneDay.format("ddd MM Do")
+          display: oneDay.format("ddd MMM Do")
         });
       }
       console.log(list)
@@ -166,8 +170,8 @@ class Appointment extends React.Component{
       <div className = "container">
         <br/>
         <br/>
-        <div className="row text-center">
-          <h2>{heading}</h2>
+        <div className="row text-center appointment">
+          <h2 className="appointment">{heading}</h2>
         </div>
         <div className="displayout">
           {Elems}

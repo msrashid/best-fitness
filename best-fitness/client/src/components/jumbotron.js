@@ -5,8 +5,8 @@ import './style.css'
 class Jumbotron extends React.Component{
 	render(){
 		return(
-			<div>
-				<div className="jumbotron jumbotron-fluid">
+			<div className="container">
+				<div className="jumbotron">
 					<div className="banner">
 					</div>
 				</div>

@@ -53,10 +53,10 @@ th{
 	margin-top: 10px;
 }
 .bigButton{
-	width: 100px;
+	width: 140px;
 	height: 45px;
 	border-radius: 4px;
-	border: none;
+	border: solid;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;

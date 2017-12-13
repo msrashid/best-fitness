@@ -9,6 +9,7 @@ import Register from './components/register.js';
 import Appointment from './components/appointment.js';
 import LoggedInNavbar from './components/loggedInNavbar.js';
 import Jumbotron from './components/jumbotron.js';
+import Footer from './components/footer.js';
 import MyAppointments from './components/myappointments.js';
 
 class App extends Component {
@@ -43,11 +44,12 @@ class App extends Component {
         <Router>
           <div>
             <Route path ="/" component={Navbar}/>
+            <Route exact path ="/" component={Jumbotron}/>
+            <Route exact path ="/" component={Footer} />
             <Route path ="/login" render={() => <Login setCurrUser={this.setCurrUser} isLoggedIn={Boolean(this.state.currUser)}/>} />
             <Route path ="/logout" render={() => <Logout setCurrUser={this.setCurrUser}/>} />
             <Route path ="/register" component={Register}/>
             <Route path ="/appointment" render={() => <Appointment client={this.state.currUser}/>} />
-            <Route exact path ="/" component={Jumbotron}/>
             <Route path ="/appointment" render={() => <LoggedInNavbar setCurrUser={this.setCurrUser} />}/>
             <Route path ="/myappointments" render={() => <LoggedInNavbar setCurrUser={this.setCurrUser} />}/>
             <Route path ="/myappointments" render={() => <MyAppointments client={this.state.currUser} />} />

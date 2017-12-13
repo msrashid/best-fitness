@@ -39,16 +39,13 @@ export default class Login extends React.Component{
         // show an error in this component
         this.setState({errorMessage: 'Invalid Email or Password'});
       } else {
-        this.setState({isLoggedIn: true});
         return res.json();
       }
     })
     .then(body => {
-      if(this.state.isLoggedIn){
-        console.log(body);
-        console.log("I got the response here!")
-        this.props.setCurrUser(body.user)
-      }
+      console.log(body);
+      console.log("I got the response here!")
+      this.props.setCurrUser(body.user)
     });
 
     event.preventDefault();
@@ -71,7 +68,7 @@ export default class Login extends React.Component{
   }
 	render(){
     console.log(this.props.isLoggedIn)
-    if(this.state.isLoggedIn || this.props.isLoggedIn) {
+    if(this.props.isLoggedIn) {
       return <Redirect to="/appointment" />;
     }
     else if(this.state.redirect) {

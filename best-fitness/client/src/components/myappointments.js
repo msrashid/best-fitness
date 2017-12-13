@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { Redirect } from 'react-router';
 import './style.css'
 const moment = require('moment');
 
@@ -29,6 +30,9 @@ class MyAppointments extends React.Component {
 			})
   }
   render(){
+  	if(this.props.client == null) {
+  		return <Redirect to="/"/>
+  	}
   	this.getAppointments();
   	let appointment = this.state.appointments.map((item) => {
   		return(

@@ -6,8 +6,8 @@ class Jumbotron extends React.Component{
 	render(){
 		return(
 			<div className="container">
-				<div className="jumbotron">
-					<div className="banner">
+				<div className="row jumbotron">
+					<div className="col-lg-12 banner">
 					</div>
 				</div>
 			</div>

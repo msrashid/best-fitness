@@ -11,9 +11,15 @@ class Day extends React.Component{
   }
   
   render() {
+    console.log("In render")
     return (
       <div className="display">
-        <button className="bigButton" type="button" onClick={() => this.props.setDate(this.props.date)}>{this.props.date}</button>
+        <button
+          className="bigButton"
+          type="button"
+          onClick={() => this.props.setDate(this.props.date.database)}>
+          {this.props.date.display}
+        </button>
       </div>
     )
   };
@@ -104,16 +110,26 @@ class Appointment extends React.Component{
     if(this.state.redirect) {
       return <Redirect to="/myappointments" />
     }
+    if(this.props.client == null) {
+      console.log("You're too slow");
+      return <Redirect to="/" />
+    }
     let clientId = this.props.client ? this.props.client.Client.id : '';
     let Elems = [];
+    let heading = 'blah blah blah';
     console.log(this.props.client);
     console.log(clientId);
     if(!Boolean(this.state.date)) {
       let todaysDate = moment();
       let list = [];
       for (let i = 0; i < 7; i++) {
-        list.push(todaysDate.add(1, 'days').format("YYYY-MM-DD"));
+        let oneDay = todaysDate.add(1, 'days');
+        list.push({
+          database: oneDay.format("YYYY-MM-DD"),
+          display: oneDay.format("ddd MM Do")
+        });
       }
+      console.log(list)
 
       Elems = list.map((item) => {
         return (
@@ -123,6 +139,8 @@ class Appointment extends React.Component{
           </div>
         )
       });
+
+      heading = "Select the day you would like to meet with one of our talented trainers!";
 
     } else if (!Boolean(this.state.time)) {
       let list = [];
@@ -140,12 +158,17 @@ class Appointment extends React.Component{
         )
       });
 
+      heading = "What time works for you?";
+
     }
     
     return(
-      <div>
+      <div className = "container">
         <br/>
         <br/>
+        <div className="row text-center">
+          <h2>{heading}</h2>
+        </div>
         <div className="displayout">
           {Elems}
         </div>

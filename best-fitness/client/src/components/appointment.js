@@ -39,8 +39,8 @@ class Day extends React.Component{
 
   render() {
     return (
-      <div>
-        <button type="button" onClick={this.handleSubmit}>{this.props.date}</button>
+      <div className="display">
+        <button className="bigButton" type="button" onClick={this.handleSubmit}>{this.props.date}</button>
       </div>
     )
   };
@@ -69,16 +69,21 @@ class Appointment extends React.Component{
     }
 
     let dayElems = list.map((item) => {
-      return <Day date={item} onClick={this.handleSubmit} id={clientId}/>
+      return(
+        <div>
+          <Day date={item} onClick={this.handleSubmit} id={clientId}/>
+          <br/>
+        </div>)
     })
 
     return(
       <div>
         <br/>
-        {dayElems}
+        <br/>
+        <div className="displayout">
+          {dayElems}
+        </div>
         <div className="row">
-          <div className="col-xs-12 text-center">
-          </div>
         </div>
       </div>
     )

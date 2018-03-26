@@ -13,13 +13,13 @@ import Footer from './components/footer.js';
 import MyAppointments from './components/myappointments.js';
 
 class App extends Component {
-  state = {
-    clients: [],
-    currUser: null,
-  }
+  constructor() {
+    super();
 
-  constructor(props) {
-    super(props);
+    this.state = {
+      clients: [],
+      currUser: null
+    }
 
     this.setCurrUser = this.setCurrUser.bind(this);
   }
@@ -30,15 +30,14 @@ class App extends Component {
     this.setState({ currUser });
     console.log(Boolean(currUser));
   }
-
+/*
   componentDidMount() {
     fetch('/api/clients')
       .then(res => res.json())
       .then(clients => this.setState({ clients: clients.allClients }));
   }
-
+*/
   render() {
-    console.log(this.state.currUser);
     return (
       <div>
         <Router>
@@ -47,8 +46,8 @@ class App extends Component {
             <Route exact path ="/" component={Jumbotron}/>
             <Route exact path ="/" component={Footer} />
             <Route path ="/login" render={() => <Login setCurrUser={this.setCurrUser} isLoggedIn={Boolean(this.state.currUser)}/>} />
-            <Route path ="/logout" render={() => <Logout setCurrUser={this.setCurrUser}/>} />
-            <Route path ="/register" component={Register}/>
+            <Route path ="/logout" render={() => <Logout setCurrUser={this.setCurrUser} isLoggedIn={Boolean(this.state.currUser)}/>} />
+            <Route path ="/register" render={() => <Register setCurrUser={this.setCurrUser} isLoggedIn={Boolean(this.state.currUser)}/>} />
             <Route path ="/appointment" render={() => <Appointment client={this.state.currUser}/>} />
             <Route path ="/appointment" render={() => <LoggedInNavbar setCurrUser={this.setCurrUser} />}/>
             <Route path ="/myappointments" render={() => <LoggedInNavbar setCurrUser={this.setCurrUser} />}/>

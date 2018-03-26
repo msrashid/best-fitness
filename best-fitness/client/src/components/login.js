@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import { Redirect } from 'react-router';
+import { Switch, Route, Link } from 'react-router-dom'; 
 import Appointment from './appointment.js';
 import './style.css'
 
@@ -19,7 +20,6 @@ export default class Login extends React.Component{
 		};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.Redirect = this.Redirect.bind(this);
 	}
 
   handleSubmit(event) {
@@ -46,6 +46,7 @@ export default class Login extends React.Component{
       console.log(body);
       console.log("I got the response here!")
       this.props.setCurrUser(body.user)
+      
     });
 
     event.preventDefault();
@@ -56,25 +57,14 @@ export default class Login extends React.Component{
     this.setState({ [fieldName]: event.target.value });
   }
 
-	/*login(e) {
-		e.preventDefault();
-		Auth.login(this.state.user, this.state.password)
-			.catch(function(err) {
-				console.log("Error", err);
-			});
-	}*/
-  Redirect(){
-    this.setState({redirect: true});
+  componentWillMount() {
+    
   }
+
 	render(){
-    console.log(this.props.isLoggedIn)
     if(this.props.isLoggedIn) {
       return <Redirect to="/appointment" />;
     }
-    else if(this.state.redirect) {
-      return <Redirect to="/register" />;
-    }
-
 		return(
 			<div>
 				<form className="text-center newfont" onSubmit={this.handleSubmit}>
@@ -99,7 +89,7 @@ export default class Login extends React.Component{
         			<div className="row newfont">
           				<div className="form-group text-center col-*-6">
               				<button type="submit" className="btn btn-default">Login</button>
-              				<button type="button" className="btn btn-default" onClick={this.Redirect}>Register</button>
+              				<Link type="button" className="btn btn-default" to="register">Register</Link>
           				</div>
         			</div>
       			</form>
